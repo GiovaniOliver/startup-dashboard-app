@@ -6,7 +6,7 @@ const Widget = () => {
 
     <div className="left">left</div>
     <div className="right">right</div>
-    
+    <div className="chart">chart</div>
     </div>
 
 
