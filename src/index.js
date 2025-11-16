@@ -7,10 +7,9 @@ import { DarkModeContextProvider } from './Context/darkModeContext';
 import { AuthContextProvider } from './Context/AuthContext';
 import { AppContextProvider } from './Context/AppContext';
 import { DataContextProvider } from './Context/DataContext';
-import ErrorBoundary from './utils/errorBoundary';
+import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
 import analytics from './utils/analytics';
 import { reportWebVitals } from './utils/performanceMonitor';
-// import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 // Initialize analytics in production
 if (process.env.NODE_ENV === 'production') {
@@ -33,16 +32,6 @@ root.render(
     </ErrorBoundary>
   </React.StrictMode>
 );
-
-// Register service worker for PWA support
-// TODO: Configure Workbox properly for service worker
-// serviceWorkerRegistration.register({
-//   onSuccess: () => console.log('Service worker registered successfully'),
-//   onUpdate: (registration) => {
-//     console.log('New content is available; please refresh.');
-//     // Optionally show a notification to the user
-//   },
-// });
 
 // Report web vitals for performance monitoring
 reportWebVitals((metric) => {

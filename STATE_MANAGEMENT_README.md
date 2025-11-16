@@ -481,7 +481,7 @@ The system is already integrated into the application. All required dependencies
 
 ## Usage Examples
 
-See `/src/examples/StateManagementExamples.js` for comprehensive usage examples.
+See `/docs/examples/StateManagementExamples.js` for comprehensive usage examples.
 
 ## Best Practices
 
