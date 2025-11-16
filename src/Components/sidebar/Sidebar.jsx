@@ -1,4 +1,6 @@
-import  "./sidebar.scss"
+import "./sidebar.scss"
+import { memo } from "react";
+import { Link } from "react-router-dom";
 
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -12,8 +14,12 @@ import PaidIcon from '@mui/icons-material/Paid';
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import WorkIcon from '@mui/icons-material/Work';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import SchoolIcon from '@mui/icons-material/School';
+import FolderIcon from '@mui/icons-material/Folder';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
-const Sidebar = ()  => {
+const Sidebar = memo(() => {
     return (
         <div className='sidebar'>
             <div className="top">
@@ -41,17 +47,29 @@ const Sidebar = ()  => {
                 
                 
 
-                <p className="title">Courses</p>
-                        <li>
-                        <WorkIcon className="icon"/>
-                        <span className="menuitems">Framework</span>
+                <p className="title">Learning & Resources</p>
 
-                        
-                        </li>
+                <Link to="/learn" style={{ textDecoration: 'none' }}>
+                  <li>
+                    <SchoolIcon className="icon"/>
+                    <span className="menuitems">Learning Center</span>
+                  </li>
+                </Link>
 
-                       
+                <Link to="/resources" style={{ textDecoration: 'none' }}>
+                  <li>
+                    <FolderIcon className="icon"/>
+                    <span className="menuitems">Resources</span>
+                  </li>
+                </Link>
 
-                        
+                <Link to="/help" style={{ textDecoration: 'none' }}>
+                  <li>
+                    <HelpOutlineIcon className="icon"/>
+                    <span className="menuitems">Help & Support</span>
+                  </li>
+                </Link>
+
                 <hr/>
 
                      <p className="title">Team Builder & Manager</p>
@@ -70,28 +88,26 @@ const Sidebar = ()  => {
                 </ul>
 
                  <ul>
-                <li>
+                <Link to="/tasks" style={{ textDecoration: 'none' }}>
+                  <li>
+                    <PlaylistAddIcon className="icon"/>
+                    <span className="menuitems">Task Dashboard</span>
+                  </li>
+                </Link>
 
-                <PlaylistAddIcon className="icon"/>
-                <span className="menuitems">Task Selector</span>
-                
-               
-                </li>
+                <Link to="/task-timeline" style={{ textDecoration: 'none' }}>
+                  <li>
+                    <AccessTimeIcon className="icon"/>
+                    <span className="menuitems">Task Timeline</span>
+                  </li>
+                </Link>
 
-
-                <li>
-                <AccessTimeIcon className="icon"/>
-                <span className="menuitems"> Task Timeline</span>
-                </li>
-
-
-                <li>
+                <Link to="/task-cost" style={{ textDecoration: 'none' }}>
+                  <li>
                     <AttachMoneyIcon className="icon"/>
-                <span className="menuitems"> Task Cost</span>
-                 </li>
-                
-              
-
+                    <span className="menuitems">Task Cost</span>
+                  </li>
+                </Link>
 
                  </ul>
 
@@ -102,54 +118,37 @@ const Sidebar = ()  => {
                 
                 <ul>
 
-                <li>
+                <p className="title">Intern Builder & Manager</p>
 
-                <span className="title"> Intern Builder & Manager </span>
-                
-                </li>
+                <Link to="/interns" style={{ textDecoration: 'none' }}>
+                  <li>
+                    <PeopleOutlineIcon className="icon"/>
+                    <span className="menuitems">Intern List</span>
+                  </li>
+                </Link>
 
-
-               
-                 <li>
-                <PeopleOutlineIcon className="icon"/>
-                <span className="menuitems">Inter Selector</span>
-                
-                </li>
-
-
-                <li>
-                <CurrencyExchangeIcon className="icon"/>
-                <span className="menuitems">Intern Cost</span>
-
-                </li>
-
-
+                <Link to="/interns/new" style={{ textDecoration: 'none' }}>
+                  <li>
+                    <PlaylistAddIcon className="icon"/>
+                    <span className="menuitems">Add New Intern</span>
+                  </li>
+                </Link>
 
                 <li>
-                <PlaylistAddIcon className="icon"/>
-                <span className="menuitems">Task Selector</span>
-                
+                  <CurrencyExchangeIcon className="icon"/>
+                  <span className="menuitems">Intern Stipend</span>
                 </li>
-
-
-                 <li>
-                <AccessTimeIcon className="icon"/>
-                <span className="menuitems">Task Timeline</span>
-                
-                </li>
-
-
-
 
                 <li>
-                <AttachMoneyIcon className="icon"/>
-                <span className="menuitems">Task Cost</span>
-                
+                  <AccessTimeIcon className="icon"/>
+                  <span className="menuitems">Task Timeline</span>
                 </li>
 
+                <li>
+                  <AttachMoneyIcon className="icon"/>
+                  <span className="menuitems">Task Cost</span>
+                </li>
 
-
-           
                 </ul>
 
 
@@ -158,21 +157,29 @@ const Sidebar = ()  => {
                 <hr/>
 
                 <ul>
-                    
+
                      <p className="title">Payout Manager</p>
 
-                <li>
-                <PaidIcon className="icon"/>
-                <span className="menuitems">Team Payout</span>
-                
-                </li>
+                <Link to="/team-payout" style={{ textDecoration: 'none' }}>
+                  <li>
+                    <PaidIcon className="icon"/>
+                    <span className="menuitems">Team Payout</span>
+                  </li>
+                </Link>
 
+                <Link to="/intern-payout" style={{ textDecoration: 'none' }}>
+                  <li>
+                    <PaidIcon className="icon"/>
+                    <span className="menuitems">Intern Payout</span>
+                  </li>
+                </Link>
 
-                <li>
-                <PaidIcon className="icon"/>
-                <span className="menuitems">Intern Payout</span>
-                
-                </li>
+                <Link to="/financial-overview" style={{ textDecoration: 'none' }}>
+                  <li>
+                    <AssessmentIcon className="icon"/>
+                    <span className="menuitems">Financial Overview</span>
+                  </li>
+                </Link>
 
                 </ul>
              <hr />
@@ -213,5 +220,8 @@ const Sidebar = ()  => {
         
     );
 
-};
+});
+
+Sidebar.displayName = 'Sidebar';
+
 export default Sidebar;

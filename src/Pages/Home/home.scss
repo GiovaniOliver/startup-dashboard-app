@@ -1,18 +1,14 @@
 .home {
     display: flex;
 
-    .homeContainer{
-
+    .homeContainer {
         flex: 6;
 
-        .widget{
-
+        .widgets {
             display: flex;
             padding: 20px;
             gap: 20px;
+            flex-wrap: wrap;
         }
-
-
     }
-
 }

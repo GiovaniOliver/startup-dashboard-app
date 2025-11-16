@@ -1,0 +1,409 @@
+.learncenter {
+  display: flex;
+  width: 100%;
+
+  .learncenterContainer {
+    flex: 6;
+
+    .learncenterContent {
+      padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 30px;
+        gap: 20px;
+        flex-wrap: wrap;
+
+        .headerLeft {
+          h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .titleIcon {
+              font-size: 36px;
+              color: #6366f1;
+            }
+          }
+
+          p {
+            font-size: 16px;
+            color: #666;
+          }
+        }
+
+        .headerRight {
+          .statsCard {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px 30px;
+            border-radius: 12px;
+            color: white;
+            min-width: 250px;
+
+            .statItem {
+              display: flex;
+              align-items: center;
+              gap: 15px;
+              margin-bottom: 10px;
+
+              .statIcon {
+                font-size: 32px;
+              }
+
+              .statContent {
+                h3 {
+                  font-size: 28px;
+                  margin: 0;
+                }
+
+                p {
+                  margin: 0;
+                  opacity: 0.9;
+                  font-size: 14px;
+                }
+              }
+            }
+
+            .progressBar {
+              height: 8px;
+              background: rgba(255, 255, 255, 0.3);
+              border-radius: 4px;
+              overflow: hidden;
+
+              .progressFill {
+                height: 100%;
+                background: white;
+                border-radius: 4px;
+                transition: width 0.3s ease;
+              }
+            }
+          }
+        }
+      }
+
+      .quickStats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+
+        .statBox {
+          background: white;
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          transition: transform 0.2s;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          }
+
+          .icon {
+            font-size: 40px;
+            color: #6366f1;
+
+            &.completed {
+              color: #10b981;
+            }
+          }
+
+          .statInfo {
+            h2 {
+              margin: 0;
+              font-size: 28px;
+              color: #333;
+            }
+
+            p {
+              margin: 5px 0 0 0;
+              color: #666;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+
+      .filterBar {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+
+        button {
+          padding: 10px 20px;
+          border: 2px solid #e5e7eb;
+          background: white;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          color: #666;
+          transition: all 0.2s;
+
+          &:hover {
+            border-color: #6366f1;
+            color: #6366f1;
+          }
+
+          &.active {
+            background: #6366f1;
+            border-color: #6366f1;
+            color: white;
+          }
+        }
+      }
+
+      .modulesGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+
+        .moduleCard {
+          background: white;
+          border-radius: 16px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+          overflow: hidden;
+          transition: all 0.3s;
+          border: 2px solid transparent;
+
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-color: #6366f1;
+          }
+
+          &.completed {
+            border-color: #10b981;
+            background: linear-gradient(to bottom, #f0fdf4 0%, white 50%);
+          }
+
+          &.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+          }
+
+          .moduleHeader {
+            padding: 30px 30px 20px;
+            position: relative;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+
+            .moduleIcon {
+              font-size: 48px;
+              margin-bottom: 10px;
+            }
+
+            .moduleBadge {
+              position: absolute;
+              top: 20px;
+              right: 20px;
+
+              .badgeIcon {
+                font-size: 28px;
+
+                &.completed {
+                  color: #10b981;
+                }
+
+                &.inProgress {
+                  color: #f59e0b;
+                }
+
+                &.locked {
+                  color: #9ca3af;
+                }
+              }
+            }
+          }
+
+          .moduleBody {
+            padding: 0 30px 20px;
+
+            h3 {
+              font-size: 22px;
+              color: #1f2937;
+              margin: 0 0 10px 0;
+            }
+
+            .description {
+              color: #6b7280;
+              font-size: 14px;
+              line-height: 1.6;
+              margin-bottom: 20px;
+            }
+
+            .moduleStats {
+              display: flex;
+              gap: 15px;
+              margin-bottom: 20px;
+              flex-wrap: wrap;
+
+              .stat {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 13px;
+                color: #6b7280;
+                padding: 6px 12px;
+                background: #f3f4f6;
+                border-radius: 6px;
+
+                .statIcon {
+                  font-size: 16px;
+                }
+
+                &.difficulty {
+                  &.beginner {
+                    background: #dbeafe;
+                    color: #1e40af;
+                  }
+
+                  &.intermediate {
+                    background: #fef3c7;
+                    color: #92400e;
+                  }
+
+                  &.advanced {
+                    background: #fee2e2;
+                    color: #991b1b;
+                  }
+                }
+              }
+            }
+
+            .objectives {
+              margin-bottom: 20px;
+
+              h4 {
+                font-size: 14px;
+                color: #374151;
+                margin-bottom: 10px;
+                font-weight: 600;
+              }
+
+              ul {
+                margin: 0;
+                padding-left: 20px;
+
+                li {
+                  color: #6b7280;
+                  font-size: 13px;
+                  margin-bottom: 6px;
+                  line-height: 1.5;
+                }
+              }
+            }
+
+            .moduleProgress {
+              margin-top: 20px;
+
+              .progressHeader {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;
+                font-size: 13px;
+                color: #6b7280;
+                font-weight: 500;
+              }
+
+              .progressBar {
+                height: 8px;
+                background: #e5e7eb;
+                border-radius: 4px;
+                overflow: hidden;
+
+                .progressFill {
+                  height: 100%;
+                  background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+                  border-radius: 4px;
+                  transition: width 0.3s ease;
+                }
+              }
+            }
+          }
+
+          .moduleFooter {
+            padding: 0 30px 30px;
+
+            .startButton {
+              display: block;
+              width: 100%;
+              padding: 12px;
+              background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+              color: white;
+              text-align: center;
+              border-radius: 8px;
+              text-decoration: none;
+              font-weight: 600;
+              transition: all 0.2s;
+              border: none;
+              cursor: pointer;
+
+              &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+              }
+            }
+          }
+        }
+      }
+
+      .noResults {
+        text-align: center;
+        padding: 60px 20px;
+
+        .noResultsIcon {
+          font-size: 64px;
+          color: #d1d5db;
+          margin-bottom: 20px;
+        }
+
+        h3 {
+          color: #6b7280;
+          margin-bottom: 10px;
+        }
+
+        p {
+          color: #9ca3af;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .learncenter {
+    .learncenterContainer {
+      .learncenterContent {
+        padding: 15px;
+
+        .header {
+          flex-direction: column;
+
+          .headerRight {
+            width: 100%;
+
+            .statsCard {
+              width: 100%;
+            }
+          }
+        }
+
+        .modulesGrid {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}

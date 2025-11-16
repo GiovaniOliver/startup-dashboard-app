@@ -1,0 +1,131 @@
+.internOnboardingProgress {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+
+  .progressHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin: 0;
+    }
+
+    .progressStats {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .progressCount {
+        font-size: 14px;
+        color: #6c757d;
+        font-weight: 500;
+      }
+
+      .progressPercentage {
+        font-size: 20px;
+        font-weight: 700;
+        color: #667eea;
+      }
+    }
+  }
+
+  .progressBarContainer {
+    margin-bottom: 24px;
+
+    .progressBar {
+      height: 12px;
+      background: #e9ecef;
+      border-radius: 6px;
+      overflow: hidden;
+
+      .progressFill {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        border-radius: 6px;
+        transition: width 0.5s ease;
+      }
+    }
+  }
+
+  .checklistItems {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .checklistItem {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #e9ecef;
+      }
+
+      .checkIcon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          font-size: 24px;
+          color: #adb5bd;
+        }
+      }
+
+      .itemText {
+        flex: 1;
+        font-size: 14px;
+        color: #6c757d;
+        font-weight: 500;
+      }
+
+      &.completed {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+
+        .checkIcon svg {
+          color: #28a745;
+        }
+
+        .itemText {
+          color: #155724;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+
+  .completionBadge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 16px;
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border-radius: 8px;
+    border: 2px solid #28a745;
+
+    svg {
+      font-size: 28px;
+      color: #28a745;
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: 700;
+      color: #155724;
+    }
+  }
+}

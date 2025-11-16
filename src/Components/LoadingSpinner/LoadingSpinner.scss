@@ -1,0 +1,300 @@
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  .spinner-circle {
+    position: relative;
+    display: inline-block;
+  }
+
+  .spinner-inner {
+    border-radius: 50%;
+    border-style: solid;
+    animation: spin 1s linear infinite;
+  }
+
+  .spinner-text {
+    margin: 0;
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  &.spinner-small .spinner-inner {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+  }
+
+  &.spinner-medium .spinner-inner {
+    width: 40px;
+    height: 40px;
+    border-width: 4px;
+  }
+
+  &.spinner-large .spinner-inner {
+    width: 60px;
+    height: 60px;
+    border-width: 6px;
+  }
+
+  &.spinner-primary .spinner-inner {
+    border-color: #667eea;
+    border-top-color: transparent;
+  }
+
+  &.spinner-secondary .spinner-inner {
+    border-color: #6b7280;
+    border-top-color: transparent;
+  }
+
+  &.spinner-success .spinner-inner {
+    border-color: #10b981;
+    border-top-color: transparent;
+  }
+
+  &.spinner-danger .spinner-inner {
+    border-color: #ef4444;
+    border-top-color: transparent;
+  }
+
+  &.spinner-warning .spinner-inner {
+    border-color: #f59e0b;
+    border-top-color: transparent;
+  }
+}
+
+.loading-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 9999;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 100;
+  border-radius: inherit;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Skeleton Loaders
+.skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 50%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: 4px;
+
+  &.skeleton-text {
+    height: 1em;
+    margin-bottom: 8px;
+  }
+
+  &.skeleton-title {
+    height: 2em;
+    margin-bottom: 12px;
+  }
+
+  &.skeleton-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+
+  &.skeleton-circle {
+    border-radius: 50%;
+  }
+
+  &.skeleton-rect {
+    border-radius: 4px;
+  }
+}
+
+.skeleton-card {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  .skeleton-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.skeleton-table {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+
+  .skeleton-table-header,
+  .skeleton-table-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .skeleton-table-header {
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .skeleton-table-row {
+    border-bottom: 1px solid #e5e7eb;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// Progress Bar
+.progress-bar-container {
+  width: 100%;
+  background: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+
+  .progress-bar {
+    height: 8px;
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+
+    &.progress-primary {
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    }
+
+    &.progress-success {
+      background: #10b981;
+    }
+
+    &.progress-danger {
+      background: #ef4444;
+    }
+
+    &.progress-warning {
+      background: #f59e0b;
+    }
+
+    .progress-percentage {
+      font-size: 10px;
+      font-weight: 600;
+      color: white;
+      white-space: nowrap;
+    }
+  }
+}
+
+// Screen reader only
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Dark mode support
+.dark {
+  .loading-fullscreen {
+    background: rgba(17, 24, 39, 0.95);
+  }
+
+  .loading-overlay {
+    background: rgba(17, 24, 39, 0.8);
+  }
+
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      #374151 0%,
+      #4b5563 50%,
+      #374151 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  .skeleton-card {
+    border-color: #374151;
+  }
+
+  .skeleton-table {
+    border-color: #374151;
+
+    .skeleton-table-header {
+      background: #1f2937;
+      border-bottom-color: #374151;
+    }
+
+    .skeleton-table-row {
+      border-bottom-color: #374151;
+    }
+  }
+
+  .progress-bar-container {
+    background: #374151;
+  }
+
+  .spinner-text {
+    color: #d1d5db;
+  }
+}

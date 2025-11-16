@@ -1,0 +1,17 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow authentication pages
+Disallow: /login
+Disallow: /logout
+Disallow: /reset-password
+
+# Disallow admin pages
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1

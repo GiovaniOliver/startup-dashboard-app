@@ -1,0 +1,495 @@
+.financialReport {
+  .reportHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .reportControls {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+
+      .controlGroup {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        label {
+          font-size: 12px;
+          color: #666;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        select {
+          padding: 8px 15px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          background: white;
+          cursor: pointer;
+          font-size: 14px;
+
+          &:focus {
+            outline: none;
+            border-color: #7451f8;
+          }
+        }
+      }
+    }
+
+    .exportButtons {
+      display: flex;
+      gap: 10px;
+
+      .exportBtn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.2s;
+        font-size: 14px;
+
+        &.pdf {
+          background: #f44336;
+          color: white;
+
+          &:hover {
+            background: #d32f2f;
+            transform: translateY(-1px);
+          }
+        }
+
+        &.csv {
+          background: #4caf50;
+          color: white;
+
+          &:hover {
+            background: #388e3c;
+            transform: translateY(-1px);
+          }
+        }
+      }
+    }
+  }
+
+  .reportContent {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+    .reportTitleSection {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 3px solid #7451f8;
+
+      h1 {
+        font-size: 32px;
+        color: #333;
+        margin: 0 0 15px 0;
+      }
+
+      .reportMeta {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        font-size: 14px;
+        color: #666;
+
+        span {
+          &:not(:last-child)::after {
+            content: '|';
+            margin-left: 30px;
+            color: #ddd;
+          }
+        }
+      }
+    }
+
+    .reportSection {
+      margin-bottom: 40px;
+      page-break-inside: avoid;
+
+      h2 {
+        font-size: 22px;
+        color: #333;
+        margin: 0 0 20px 0;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      h4 {
+        font-size: 16px;
+        color: #495057;
+        margin: 0 0 15px 0;
+      }
+
+      .summaryGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+
+        .summaryItem {
+          background: #f8f9fa;
+          padding: 20px;
+          border-radius: 8px;
+          border-left: 4px solid #7451f8;
+
+          label {
+            display: block;
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          value {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+
+            &.revenue {
+              color: #4caf50;
+            }
+
+            &.expense {
+              color: #f44336;
+            }
+
+            &.net {
+              color: #7451f8;
+            }
+
+            &.margin {
+              color: #ff9800;
+            }
+          }
+        }
+      }
+
+      .reportTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+
+        thead {
+          tr {
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+
+            th {
+              padding: 12px;
+              text-align: left;
+              font-weight: 600;
+              color: #495057;
+              font-size: 13px;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            border-bottom: 1px solid #e9ecef;
+
+            &.totalRow {
+              background: #f8f9fa;
+              border-top: 2px solid #dee2e6;
+              border-bottom: 2px solid #dee2e6;
+            }
+
+            td {
+              padding: 12px;
+              font-size: 14px;
+              color: #495057;
+
+              .progressBar {
+                width: 100%;
+                height: 8px;
+                background: #e9ecef;
+                border-radius: 4px;
+                overflow: hidden;
+
+                .progress {
+                  height: 100%;
+                  background: linear-gradient(90deg, #7451f8 0%, #9575ff 100%);
+                  border-radius: 4px;
+                }
+              }
+
+              .badge {
+                padding: 4px 10px;
+                border-radius: 15px;
+                font-size: 11px;
+                font-weight: 600;
+                text-transform: uppercase;
+
+                &.paid {
+                  background: #d4edda;
+                  color: #155724;
+                }
+
+                &.pending {
+                  background: #fff3cd;
+                  color: #856404;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .departmentGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+
+        .departmentCard {
+          background: #f8f9fa;
+          padding: 20px;
+          border-radius: 8px;
+          border-top: 4px solid #7451f8;
+
+          h3 {
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            color: #333;
+          }
+
+          .departmentStat {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+
+            &.total {
+              border-top: 2px solid #dee2e6;
+              border-bottom: none;
+              margin-top: 10px;
+              padding-top: 15px;
+
+              label,
+              value {
+                font-weight: 700;
+                color: #7451f8;
+              }
+
+              value {
+                font-size: 18px;
+              }
+            }
+
+            label {
+              font-size: 13px;
+              color: #666;
+            }
+
+            value {
+              font-weight: 600;
+              color: #333;
+            }
+          }
+        }
+      }
+
+      .plStatement {
+        .plSection {
+          margin-bottom: 25px;
+          padding: 20px;
+          border-radius: 8px;
+
+          &.revenue {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+          }
+
+          &.expenses {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+          }
+
+          &.netIncome {
+            background: linear-gradient(135deg, #7451f8 0%, #9575ff 100%);
+            padding: 25px;
+
+            .plItem {
+              border-bottom: none;
+              padding: 0;
+
+              strong {
+                color: white;
+                font-size: 20px;
+
+                &.profit {
+                  font-size: 32px;
+                }
+              }
+            }
+          }
+
+          h4 {
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            color: #333;
+          }
+
+          .plItem {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            &.total {
+              border-top: 2px solid rgba(0, 0, 0, 0.2);
+              margin-top: 10px;
+              padding-top: 15px;
+              font-size: 16px;
+            }
+
+            span,
+            strong {
+              font-size: 14px;
+              color: #495057;
+            }
+          }
+        }
+      }
+
+      .ytdGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+
+        .ytdItem {
+          background: #f8f9fa;
+          padding: 20px;
+          border-radius: 8px;
+          border-left: 4px solid #7451f8;
+
+          &.highlight {
+            background: linear-gradient(135deg, #7451f8 0%, #9575ff 100%);
+
+            label,
+            value {
+              color: white;
+            }
+
+            value {
+              font-size: 28px;
+            }
+          }
+
+          label {
+            display: block;
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          value {
+            display: block;
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+          }
+        }
+      }
+    }
+
+    .reportFooter {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 2px solid #f0f0f0;
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+
+      p {
+        margin: 10px 0;
+        line-height: 1.6;
+      }
+
+      .timestamp {
+        margin-top: 20px;
+        font-style: italic;
+        color: #999;
+      }
+    }
+  }
+}
+
+@media print {
+  .financialReport {
+    .reportHeader {
+      display: none;
+    }
+
+    .reportContent {
+      box-shadow: none;
+      padding: 20px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .financialReport {
+    .reportHeader {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .reportControls {
+        width: 100%;
+      }
+
+      .exportButtons {
+        width: 100%;
+
+        .exportBtn {
+          flex: 1;
+        }
+      }
+    }
+
+    .reportContent {
+      padding: 20px;
+
+      .reportTitleSection {
+        h1 {
+          font-size: 24px;
+        }
+
+        .reportMeta {
+          flex-direction: column;
+          gap: 10px;
+
+          span::after {
+            display: none;
+          }
+        }
+      }
+
+      .reportSection {
+        .departmentGrid,
+        .summaryGrid,
+        .ytdGrid {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}
