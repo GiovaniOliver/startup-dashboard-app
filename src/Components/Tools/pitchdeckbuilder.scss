@@ -1,0 +1,349 @@
+.pitchDeckBuilder {
+  display: flex;
+  width: 100%;
+
+  .builderContainer {
+    flex: 6;
+
+    .builderContent {
+      padding: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+
+      .header {
+        margin-bottom: 30px;
+
+        .backButton {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          color: #6366f1;
+          text-decoration: none;
+          font-weight: 500;
+          margin-bottom: 20px;
+          transition: all 0.2s;
+
+          &:hover {
+            gap: 8px;
+          }
+        }
+
+        h1 {
+          font-size: 32px;
+          color: #1f2937;
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .titleIcon {
+            font-size: 36px;
+            color: #6366f1;
+          }
+        }
+
+        p {
+          font-size: 16px;
+          color: #6b7280;
+        }
+      }
+
+      .progressSection {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 25px;
+
+        .progressHeader {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 12px;
+          font-size: 14px;
+          color: #6b7280;
+          font-weight: 500;
+        }
+
+        .progressBar {
+          height: 12px;
+          background: #e5e7eb;
+          border-radius: 6px;
+          overflow: hidden;
+
+          .progressFill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            border-radius: 6px;
+            transition: width 0.3s ease;
+          }
+        }
+      }
+
+      .actions {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 30px;
+
+        .actionButton {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 24px;
+          border: none;
+          border-radius: 8px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &.save {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            }
+          }
+
+          &.export {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            }
+          }
+        }
+      }
+
+      .mainContent {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 30px;
+
+        .slideNav {
+          background: white;
+          padding: 20px;
+          border-radius: 16px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+          height: fit-content;
+          position: sticky;
+          top: 20px;
+
+          h3 {
+            font-size: 16px;
+            color: #1f2937;
+            margin: 0 0 20px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e5e7eb;
+          }
+
+          .slideList {
+            .slideItem {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 12px;
+              border-radius: 8px;
+              cursor: pointer;
+              margin-bottom: 8px;
+              transition: all 0.2s;
+              border: 2px solid transparent;
+
+              &:hover {
+                background: #f9fafb;
+              }
+
+              &.active {
+                background: #eef2ff;
+                border-color: #6366f1;
+              }
+
+              &.completed {
+                .checkIcon {
+                  color: #10b981;
+                }
+              }
+
+              .slideIcon {
+                .checkIcon,
+                .uncheckedIcon {
+                  font-size: 20px;
+                }
+
+                .uncheckedIcon {
+                  color: #d1d5db;
+                }
+              }
+
+              .slideInfo {
+                flex: 1;
+
+                .slideNumber {
+                  font-size: 11px;
+                  color: #9ca3af;
+                  font-weight: 500;
+                  margin-bottom: 2px;
+                }
+
+                .slideTitle {
+                  font-size: 13px;
+                  color: #374151;
+                  font-weight: 500;
+                  line-height: 1.3;
+                }
+              }
+            }
+          }
+        }
+
+        .slideEditor {
+          background: white;
+          padding: 40px;
+          border-radius: 16px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+          .slideHeader {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e5e7eb;
+
+            .slideMeta {
+              font-size: 14px;
+              color: #6366f1;
+              font-weight: 600;
+              margin-bottom: 15px;
+            }
+
+            h2 {
+              margin: 0 0 15px 0;
+              font-size: 32px;
+              color: #1f2937;
+            }
+
+            .slideDescription {
+              font-size: 16px;
+              color: #6b7280;
+              line-height: 1.6;
+              margin: 0;
+            }
+          }
+
+          .slideForm {
+            margin-bottom: 40px;
+
+            .formGroup {
+              margin-bottom: 30px;
+
+              label {
+                display: block;
+                font-size: 15px;
+                font-weight: 600;
+                color: #374151;
+                margin-bottom: 10px;
+              }
+
+              textarea {
+                width: 100%;
+                padding: 14px 16px;
+                border: 2px solid #e5e7eb;
+                border-radius: 8px;
+                font-size: 15px;
+                font-family: inherit;
+                resize: vertical;
+                transition: all 0.2s;
+                line-height: 1.6;
+
+                &:focus {
+                  outline: none;
+                  border-color: #6366f1;
+                  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+                }
+
+                &::placeholder {
+                  color: #9ca3af;
+                }
+              }
+            }
+          }
+
+          .slideNavigation {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 30px;
+            border-top: 2px solid #e5e7eb;
+
+            .navButton {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              padding: 12px 24px;
+              background: white;
+              border: 2px solid #e5e7eb;
+              border-radius: 8px;
+              color: #374151;
+              font-size: 14px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s;
+
+              &:hover:not(:disabled) {
+                border-color: #6366f1;
+                color: #6366f1;
+                background: #eef2ff;
+              }
+
+              &:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+              }
+
+              &.next {
+                margin-left: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .pitchDeckBuilder {
+    .builderContainer {
+      .builderContent {
+        .mainContent {
+          grid-template-columns: 1fr;
+
+          .slideNav {
+            position: static;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pitchDeckBuilder {
+    .builderContainer {
+      .builderContent {
+        padding: 15px;
+
+        .mainContent {
+          .slideEditor {
+            padding: 20px;
+
+            .slideHeader {
+              h2 {
+                font-size: 24px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

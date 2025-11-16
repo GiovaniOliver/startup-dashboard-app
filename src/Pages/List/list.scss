@@ -1,0 +1,321 @@
+.list {
+  display: flex;
+  width: 100%;
+
+  .listContainer {
+    flex: 6;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+
+    .listContent {
+      padding: 20px;
+
+      .listHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        .listTitle {
+          color: #333;
+          font-size: 28px;
+          font-weight: 600;
+        }
+
+        .listActions {
+          display: flex;
+          gap: 15px;
+
+          .link {
+            text-decoration: none;
+          }
+
+          .exportButton,
+          .addButton {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+          }
+
+          .exportButton {
+            background-color: #2563eb;
+            color: white;
+
+            &:hover {
+              background-color: #1d4ed8;
+            }
+          }
+
+          .addButton {
+            background-color: #10b981;
+            color: white;
+
+            &:hover {
+              background-color: #059669;
+            }
+          }
+        }
+      }
+
+      .listFilters {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+
+        .searchBar {
+          position: relative;
+          flex: 1;
+          min-width: 300px;
+
+          .searchIcon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+          }
+
+          .searchInput {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: white;
+            transition: all 0.3s ease;
+
+            &:focus {
+              outline: none;
+              border-color: #7451f8;
+              box-shadow: 0 0 0 3px rgba(116, 81, 248, 0.1);
+            }
+
+            &::placeholder {
+              color: #9ca3af;
+            }
+          }
+        }
+
+        .filterGroup {
+          display: flex;
+          gap: 15px;
+
+          .filterSelect {
+            padding: 12px 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:focus {
+              outline: none;
+              border-color: #7451f8;
+            }
+          }
+        }
+      }
+
+      .dataTable {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+
+        .cellWithImg {
+          display: flex;
+          align-items: center;
+
+          .cellImg {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+          }
+        }
+
+        .cellWithSalary {
+          font-weight: 600;
+          color: #10b981;
+        }
+
+        .cellWithStatus {
+          padding: 6px 12px;
+          border-radius: 20px;
+          font-size: 12px;
+          font-weight: 600;
+          text-align: center;
+          display: inline-block;
+
+          &.active {
+            background-color: #d1fae5;
+            color: #065f46;
+          }
+
+          &.on-leave {
+            background-color: #fef3c7;
+            color: #92400e;
+          }
+
+          &.inactive {
+            background-color: #fee2e2;
+            color: #991b1b;
+          }
+        }
+
+        .cellAction {
+          display: flex;
+          gap: 10px;
+
+          .viewButton,
+          .editButton,
+          .deleteButton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            svg {
+              font-size: 18px;
+            }
+          }
+
+          .viewButton {
+            background-color: #dbeafe;
+            color: #1e40af;
+
+            &:hover {
+              background-color: #bfdbfe;
+            }
+          }
+
+          .editButton {
+            background-color: #fef3c7;
+            color: #92400e;
+
+            &:hover {
+              background-color: #fde68a;
+            }
+          }
+
+          .deleteButton {
+            background-color: #fee2e2;
+            color: #991b1b;
+
+            &:hover {
+              background-color: #fecaca;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dark mode styles
+.dark {
+  .list {
+    .listContainer {
+      background-color: #111827;
+
+      .listContent {
+        .listHeader {
+          .listTitle {
+            color: #f9fafb;
+          }
+        }
+
+        .listFilters {
+          .searchBar {
+            .searchInput {
+              background-color: #1f2937;
+              border-color: #374151;
+              color: #f9fafb;
+
+              &:focus {
+                border-color: #7451f8;
+                box-shadow: 0 0 0 3px rgba(116, 81, 248, 0.2);
+              }
+
+              &::placeholder {
+                color: #6b7280;
+              }
+            }
+          }
+
+          .filterGroup {
+            .filterSelect {
+              background-color: #1f2937;
+              border-color: #374151;
+              color: #f9fafb;
+
+              &:focus {
+                border-color: #7451f8;
+              }
+
+              option {
+                background-color: #1f2937;
+              }
+            }
+          }
+        }
+
+        .dataTable {
+          background-color: #1f2937;
+
+          .cellWithSalary {
+            color: #34d399;
+          }
+
+          .cellAction {
+            .viewButton {
+              background-color: #1e3a8a;
+              color: #93c5fd;
+
+              &:hover {
+                background-color: #1e40af;
+              }
+            }
+
+            .editButton {
+              background-color: #78350f;
+              color: #fcd34d;
+
+              &:hover {
+                background-color: #92400e;
+              }
+            }
+
+            .deleteButton {
+              background-color: #7f1d1d;
+              color: #fca5a5;
+
+              &:hover {
+                background-color: #991b1b;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

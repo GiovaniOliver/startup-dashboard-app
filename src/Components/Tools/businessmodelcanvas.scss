@@ -1,0 +1,331 @@
+.businessModelCanvas {
+  display: flex;
+  width: 100%;
+
+  .canvasContainer {
+    flex: 6;
+    background: #f9fafb;
+
+    .canvasContent {
+      padding: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+
+      .header {
+        margin-bottom: 30px;
+
+        .backButton {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          color: #6366f1;
+          text-decoration: none;
+          font-weight: 500;
+          margin-bottom: 20px;
+          transition: all 0.2s;
+
+          &:hover {
+            gap: 8px;
+          }
+        }
+
+        h1 {
+          font-size: 32px;
+          color: #1f2937;
+          margin-bottom: 10px;
+        }
+
+        p {
+          font-size: 16px;
+          color: #6b7280;
+        }
+      }
+
+      .canvasActions {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+
+        .actionButton {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 24px;
+          border: none;
+          border-radius: 8px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &.save {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            }
+          }
+
+          &.export {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            }
+          }
+
+          &.reset {
+            background: white;
+            color: #ef4444;
+            border: 2px solid #ef4444;
+
+            &:hover {
+              background: #ef4444;
+              color: white;
+            }
+          }
+        }
+      }
+
+      .canvasGrid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: auto auto auto;
+        gap: 15px;
+        margin-bottom: 40px;
+
+        .canvasBlock {
+          background: white;
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          display: flex;
+          flex-direction: column;
+          min-height: 250px;
+
+          .blockHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+
+            h3 {
+              margin: 0;
+              font-size: 16px;
+              color: #1f2937;
+              font-weight: 700;
+            }
+
+            .infoIcon {
+              color: #9ca3af;
+              font-size: 20px;
+              cursor: help;
+              transition: color 0.2s;
+
+              &:hover {
+                color: #6366f1;
+              }
+            }
+          }
+
+          textarea {
+            flex: 1;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: none;
+            transition: all 0.2s;
+
+            &:focus {
+              outline: none;
+              border-color: #6366f1;
+              box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            }
+
+            &::placeholder {
+              color: #9ca3af;
+            }
+          }
+
+          &.keyPartners {
+            grid-column: 1;
+            grid-row: 1 / 3;
+            background: linear-gradient(to bottom, #fef3c7 0%, white 30%);
+          }
+
+          &.keyActivities {
+            grid-column: 2;
+            grid-row: 1;
+            background: linear-gradient(to bottom, #dbeafe 0%, white 30%);
+          }
+
+          &.keyResources {
+            grid-column: 2;
+            grid-row: 2;
+            background: linear-gradient(to bottom, #dbeafe 0%, white 30%);
+          }
+
+          &.valuePropositions {
+            grid-column: 3;
+            grid-row: 1 / 3;
+            background: linear-gradient(to bottom, #fce7f3 0%, white 30%);
+          }
+
+          &.customerRelationships {
+            grid-column: 4;
+            grid-row: 1;
+            background: linear-gradient(to bottom, #d1fae5 0%, white 30%);
+          }
+
+          &.channels {
+            grid-column: 4;
+            grid-row: 2;
+            background: linear-gradient(to bottom, #d1fae5 0%, white 30%);
+          }
+
+          &.customerSegments {
+            grid-column: 5;
+            grid-row: 1 / 3;
+            background: linear-gradient(to bottom, #ede9fe 0%, white 30%);
+          }
+
+          &.costStructure {
+            grid-column: 1 / 4;
+            grid-row: 3;
+            background: linear-gradient(to bottom, #fecaca 0%, white 30%);
+          }
+
+          &.revenueStreams {
+            grid-column: 4 / 6;
+            grid-row: 3;
+            background: linear-gradient(to bottom, #d1fae5 0%, white 30%);
+          }
+        }
+      }
+
+      .tips {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        h3 {
+          font-size: 20px;
+          color: #1f2937;
+          margin-bottom: 20px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        ul {
+          margin: 0;
+          padding-left: 25px;
+
+          li {
+            font-size: 15px;
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .businessModelCanvas {
+    .canvasContainer {
+      .canvasContent {
+        .canvasGrid {
+          grid-template-columns: repeat(3, 1fr);
+
+          .canvasBlock {
+            &.keyPartners {
+              grid-column: 1;
+              grid-row: 1;
+            }
+
+            &.keyActivities {
+              grid-column: 2;
+              grid-row: 1;
+            }
+
+            &.keyResources {
+              grid-column: 3;
+              grid-row: 1;
+            }
+
+            &.valuePropositions {
+              grid-column: 1 / 4;
+              grid-row: 2;
+            }
+
+            &.customerRelationships {
+              grid-column: 1;
+              grid-row: 3;
+            }
+
+            &.channels {
+              grid-column: 2;
+              grid-row: 3;
+            }
+
+            &.customerSegments {
+              grid-column: 3;
+              grid-row: 3;
+            }
+
+            &.costStructure {
+              grid-column: 1 / 3;
+              grid-row: 4;
+            }
+
+            &.revenueStreams {
+              grid-column: 3;
+              grid-row: 4;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .businessModelCanvas {
+    .canvasContainer {
+      .canvasContent {
+        padding: 15px;
+
+        .canvasGrid {
+          grid-template-columns: 1fr;
+
+          .canvasBlock {
+            &.keyPartners,
+            &.keyActivities,
+            &.keyResources,
+            &.valuePropositions,
+            &.customerRelationships,
+            &.channels,
+            &.customerSegments,
+            &.costStructure,
+            &.revenueStreams {
+              grid-column: 1;
+              grid-row: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}

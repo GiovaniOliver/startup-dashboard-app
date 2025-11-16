@@ -1,0 +1,725 @@
+.internSingle {
+  display: flex;
+  width: 100%;
+
+  .internSingleContainer {
+    flex: 6;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+
+    .notFound {
+      padding: 40px;
+      text-align: center;
+
+      h2 {
+        color: #6c757d;
+        margin-bottom: 20px;
+      }
+
+      .backButton {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.2s;
+
+        &:hover {
+          background: #5568d3;
+        }
+      }
+    }
+
+    .contentWrapper {
+      padding: 20px;
+
+      .pageHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+
+        .backLink {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #495057;
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.2s;
+
+          &:hover {
+            color: #667eea;
+          }
+        }
+
+        .editButton {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          text-decoration: none;
+          border-radius: 8px;
+          font-weight: 500;
+          transition: transform 0.2s, box-shadow 0.2s;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+          }
+        }
+      }
+
+      .profileSection {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+        margin-bottom: 24px;
+
+        .profileCard {
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          padding: 32px;
+
+          .profileHeader {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e9ecef;
+
+            .avatar {
+              width: 120px;
+              height: 120px;
+              border-radius: 50%;
+              object-fit: cover;
+              border: 4px solid #f8f9fa;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .profileInfo {
+              flex: 1;
+
+              .name {
+                font-size: 32px;
+                font-weight: 700;
+                color: #2c3e50;
+                margin: 0 0 12px 0;
+              }
+
+              .university {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 16px;
+                color: #6c757d;
+                margin-bottom: 16px;
+
+                svg {
+                  font-size: 20px;
+                }
+              }
+
+              .contactInfo {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                margin-bottom: 16px;
+
+                .contact {
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 14px;
+                  color: #495057;
+
+                  svg {
+                    font-size: 18px;
+                    color: #667eea;
+                  }
+                }
+              }
+
+              .status {
+                display: inline-block;
+                padding: 8px 20px;
+                border-radius: 20px;
+                font-size: 13px;
+                font-weight: 600;
+                text-transform: capitalize;
+
+                &.active {
+                  background: #d4edda;
+                  color: #155724;
+                }
+
+                &.completed {
+                  background: #cce5ff;
+                  color: #004085;
+                }
+              }
+            }
+          }
+
+          .profileDetails {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+
+            .detailItem {
+              display: flex;
+              flex-direction: column;
+              gap: 6px;
+
+              .label {
+                font-size: 12px;
+                color: #6c757d;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                font-weight: 600;
+              }
+
+              .value {
+                font-size: 16px;
+                color: #2c3e50;
+                font-weight: 500;
+              }
+            }
+          }
+
+          .skillsSection {
+            h3 {
+              font-size: 18px;
+              color: #2c3e50;
+              margin-bottom: 16px;
+            }
+
+            .skillTags {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 10px;
+
+              .skillTag {
+                padding: 8px 16px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border-radius: 20px;
+                font-size: 13px;
+                font-weight: 500;
+              }
+            }
+          }
+        }
+
+        .quickStats {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+
+          .statBox {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            transition: transform 0.2s;
+
+            &:hover {
+              transform: translateY(-4px);
+            }
+
+            .statIcon {
+              width: 56px;
+              height: 56px;
+              border-radius: 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              svg {
+                font-size: 28px;
+                color: white;
+              }
+
+              &.attendance {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              }
+
+              &.performance {
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              }
+
+              &.tasks {
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              }
+            }
+
+            .statContent {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+
+              .statLabel {
+                font-size: 12px;
+                color: #6c757d;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                margin-bottom: 4px;
+              }
+
+              .statValue {
+                font-size: 28px;
+                font-weight: 700;
+                color: #2c3e50;
+                margin-bottom: 4px;
+              }
+
+              .statSubtext {
+                font-size: 12px;
+                color: #adb5bd;
+              }
+            }
+          }
+        }
+      }
+
+      .section {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 24px;
+        margin-bottom: 24px;
+
+        .sectionTitle {
+          font-size: 20px;
+          font-weight: 600;
+          color: #2c3e50;
+          margin: 0 0 20px 0;
+        }
+
+        .learningGoals {
+          display: grid;
+          gap: 16px;
+
+          .goalCard {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+
+            .goalHeader {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 12px;
+
+              .goalName {
+                font-size: 16px;
+                font-weight: 600;
+                color: #2c3e50;
+              }
+
+              .goalProgress {
+                font-size: 18px;
+                font-weight: 700;
+                color: #667eea;
+              }
+            }
+
+            .progressBar {
+              height: 10px;
+              background: #e9ecef;
+              border-radius: 5px;
+              overflow: hidden;
+              margin-bottom: 12px;
+
+              .progressFill {
+                height: 100%;
+                background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                border-radius: 5px;
+                transition: width 0.3s ease;
+              }
+            }
+
+            .goalStatus {
+              display: inline-block;
+              padding: 4px 12px;
+              border-radius: 12px;
+              font-size: 12px;
+              font-weight: 600;
+
+              &.in-progress {
+                background: #fff3cd;
+                color: #856404;
+              }
+
+              &.completed {
+                background: #d4edda;
+                color: #155724;
+              }
+            }
+          }
+        }
+
+        .tasksList {
+          display: grid;
+          gap: 12px;
+
+          .taskCard {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: background 0.2s;
+
+            &:hover {
+              background: #e9ecef;
+            }
+
+            .taskHeader {
+              display: flex;
+              gap: 16px;
+              align-items: center;
+
+              .taskIcon {
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                  font-size: 20px;
+
+                  &.completed {
+                    color: #28a745;
+                  }
+
+                  &.inProgress {
+                    color: #ffc107;
+                  }
+
+                  &.pending {
+                    color: #6c757d;
+                  }
+                }
+              }
+
+              .taskInfo {
+                h4 {
+                  font-size: 15px;
+                  color: #2c3e50;
+                  margin: 0 0 4px 0;
+                }
+
+                .taskDue {
+                  font-size: 12px;
+                  color: #6c757d;
+                }
+              }
+            }
+
+            .taskStatus {
+              padding: 6px 16px;
+              border-radius: 16px;
+              font-size: 12px;
+              font-weight: 600;
+
+              &.completed {
+                background: #d4edda;
+                color: #155724;
+              }
+
+              &.in-progress {
+                background: #fff3cd;
+                color: #856404;
+              }
+
+              &.pending {
+                background: #e9ecef;
+                color: #495057;
+              }
+            }
+          }
+        }
+
+        .projectsList {
+          display: grid;
+          gap: 16px;
+
+          .projectCard {
+            display: flex;
+            gap: 16px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+
+            .projectIcon {
+              width: 48px;
+              height: 48px;
+              border-radius: 8px;
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              svg {
+                color: white;
+                font-size: 24px;
+              }
+            }
+
+            .projectInfo {
+              flex: 1;
+
+              h4 {
+                font-size: 16px;
+                color: #2c3e50;
+                margin: 0 0 6px 0;
+              }
+
+              .projectRole {
+                font-size: 13px;
+                color: #6c757d;
+                margin: 0 0 12px 0;
+              }
+
+              .contributionBar {
+                display: grid;
+                grid-template-columns: auto 1fr auto;
+                gap: 12px;
+                align-items: center;
+
+                .contributionLabel {
+                  font-size: 12px;
+                  color: #6c757d;
+                  font-weight: 600;
+                }
+
+                .contributionProgress {
+                  height: 8px;
+                  background: #e9ecef;
+                  border-radius: 4px;
+                  overflow: hidden;
+
+                  .contributionFill {
+                    height: 100%;
+                    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 4px;
+                  }
+                }
+
+                .contributionValue {
+                  font-size: 13px;
+                  font-weight: 700;
+                  color: #667eea;
+                }
+              }
+            }
+          }
+        }
+
+        .checklistGrid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 12px;
+
+          .checklistItem {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #6c757d;
+
+            .checkIcon {
+              font-size: 20px;
+              color: #adb5bd;
+            }
+
+            &.completed {
+              background: #d4edda;
+              color: #155724;
+
+              .checkIcon {
+                color: #28a745;
+              }
+            }
+          }
+        }
+
+        .evaluationsList {
+          display: grid;
+          gap: 24px;
+
+          .evaluationCard {
+            padding: 24px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+
+            .evaluationHeader {
+              display: flex;
+              gap: 24px;
+              margin-bottom: 24px;
+              flex-wrap: wrap;
+
+              .evaluationDate,
+              .evaluator,
+              .overallRating {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 14px;
+                color: #495057;
+
+                svg {
+                  font-size: 18px;
+                  color: #667eea;
+                }
+              }
+
+              .overallRating {
+                margin-left: auto;
+                font-size: 18px;
+                font-weight: 700;
+                color: #f39c12;
+
+                svg {
+                  color: #f39c12;
+                  font-size: 24px;
+                }
+              }
+            }
+
+            .evaluationScores {
+              display: grid;
+              gap: 16px;
+              margin-bottom: 20px;
+
+              .scoreItem {
+                display: grid;
+                grid-template-columns: 140px 1fr auto;
+                gap: 12px;
+                align-items: center;
+
+                .scoreLabel {
+                  font-size: 14px;
+                  color: #495057;
+                  font-weight: 500;
+                }
+
+                .scoreBar {
+                  height: 8px;
+                  background: #e9ecef;
+                  border-radius: 4px;
+                  overflow: hidden;
+
+                  .scoreFill {
+                    height: 100%;
+                    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 4px;
+                  }
+                }
+
+                .scoreValue {
+                  font-size: 14px;
+                  font-weight: 700;
+                  color: #667eea;
+                  min-width: 50px;
+                  text-align: right;
+                }
+              }
+            }
+
+            .evaluationComments {
+              h4 {
+                font-size: 14px;
+                color: #495057;
+                margin: 0 0 8px 0;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              }
+
+              p {
+                font-size: 14px;
+                color: #6c757d;
+                line-height: 1.6;
+                margin: 0;
+              }
+            }
+          }
+        }
+
+        .interviewNotes {
+          padding: 20px;
+          background: #f8f9fa;
+          border-radius: 8px;
+          border-left: 4px solid #667eea;
+
+          p {
+            font-size: 14px;
+            color: #495057;
+            line-height: 1.6;
+            margin: 0;
+          }
+        }
+      }
+
+      .gridSection {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-bottom: 24px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .internSingle {
+    .internSingleContainer {
+      .contentWrapper {
+        .profileSection {
+          grid-template-columns: 1fr;
+        }
+
+        .gridSection {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .internSingle {
+    .internSingleContainer {
+      .contentWrapper {
+        .profileSection {
+          .profileCard {
+            .profileHeader {
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
