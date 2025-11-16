@@ -42,7 +42,7 @@ const InternList = () => {
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this intern?")) {
       // In a real application, this would call an API to delete the intern
-      console.log("Deleting intern with id:", id);
+      // Delete operation would be performed here
     }
   };
 

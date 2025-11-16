@@ -3,23 +3,36 @@ import { useParams, Link } from 'react-router-dom';
 import Sidebar from '../../Components/sidebar/Sidebar';
 import Navbar from '../../Components/navbar/Navbar';
 import './TaskDetail.scss';
-import {
-  ArrowBack as BackIcon,
-  Edit as EditIcon,
-  AccessTime as TimeIcon,
-  AttachMoney as MoneyIcon,
-  CalendarToday as CalendarIcon,
-  Person as PersonIcon,
-  Assignment as AssignmentIcon,
-  Comment as CommentIcon,
-  AttachFile as AttachFileIcon,
-  History as HistoryIcon,
-  CheckCircle as CheckIcon,
-  RadioButtonUnchecked as UncheckIcon,
-  PriorityHigh as PriorityIcon,
-  TrendingUp as TrendIcon
-} from '@mui/icons-material';
+import ArrowBack from '@mui/icons-material/ArrowBack';
+import Edit from '@mui/icons-material/Edit';
+import AccessTime from '@mui/icons-material/AccessTime';
+import AttachMoney from '@mui/icons-material/AttachMoney';
+import CalendarToday from '@mui/icons-material/CalendarToday';
+import Person from '@mui/icons-material/Person';
+import Assignment from '@mui/icons-material/Assignment';
+import Comment from '@mui/icons-material/Comment';
+import AttachFile from '@mui/icons-material/AttachFile';
+import History from '@mui/icons-material/History';
+import CheckCircle from '@mui/icons-material/CheckCircle';
+import RadioButtonUnchecked from '@mui/icons-material/RadioButtonUnchecked';
+import PriorityHigh from '@mui/icons-material/PriorityHigh';
+import TrendingUp from '@mui/icons-material/TrendingUp';
 import taskData, { calculateTaskProgress, calculateTaskCost } from '../../data/taskData';
+
+const BackIcon = ArrowBack;
+const EditIcon = Edit;
+const TimeIcon = AccessTime;
+const MoneyIcon = AttachMoney;
+const CalendarIcon = CalendarToday;
+const PersonIcon = Person;
+const AssignmentIcon = Assignment;
+const CommentIcon = Comment;
+const AttachFileIcon = AttachFile;
+const HistoryIcon = History;
+const CheckIcon = CheckCircle;
+const UncheckIcon = RadioButtonUnchecked;
+const PriorityIcon = PriorityHigh;
+const TrendIcon = TrendingUp;
 
 const TaskDetail = () => {
   const { taskId } = useParams();

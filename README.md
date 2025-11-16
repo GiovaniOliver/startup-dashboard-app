@@ -20,6 +20,17 @@ A comprehensive, production-ready startup dashboard management system built with
 - **Docker Support**: Containerized deployment ready
 - **CI/CD Pipeline**: GitHub Actions for automated testing and deployment
 
+## Documentation
+
+For comprehensive documentation, see the **[Documentation Index](./DOCUMENTATION_INDEX.md)** which organizes all guides by role and task.
+
+Quick links:
+- [Quick Start Guide](./QUICKSTART.md) - Get started in 5 minutes
+- [Architecture](./ARCHITECTURE.md) - Understand the system design
+- [Deployment Guide](./DEPLOYMENT.md) - Deploy to production
+- [Troubleshooting](./TROUBLESHOOTING.md) - Common issues and solutions
+- [Contributing](./CONTRIBUTING.md) - Contribution guidelines
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)

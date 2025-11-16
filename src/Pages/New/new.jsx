@@ -179,8 +179,6 @@ const New = ({ title }) => {
       ],
     };
 
-    console.log("Saving team member:", newMember);
-
     // In a real application, you would save to backend here
     alert(
       isEditMode

@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom';
 import Sidebar from '../sidebar/Sidebar';
 import Navbar from '../navbar/Navbar';
 import './TaskTimeline.scss';
-import {
-  FilterList as FilterIcon,
-  ZoomIn as ZoomInIcon,
-  ZoomOut as ZoomOutIcon,
-  Today as TodayIcon
-} from '@mui/icons-material';
+import FilterList from '@mui/icons-material/FilterList';
+import ZoomIn from '@mui/icons-material/ZoomIn';
+import ZoomOut from '@mui/icons-material/ZoomOut';
+import Today from '@mui/icons-material/Today';
 import taskData from '../../data/taskData';
+
+const FilterIcon = FilterList;
+const ZoomInIcon = ZoomIn;
+const ZoomOutIcon = ZoomOut;
+const TodayIcon = Today;
 
 const TaskTimeline = () => {
   const [tasks, setTasks] = useState(taskData);

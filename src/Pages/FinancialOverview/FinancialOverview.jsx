@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import './financialOverview.scss';
 import Sidebar from '../../Components/sidebar/Sidebar';
 import Navbar from '../../Components/navbar/Navbar';
@@ -24,19 +24,23 @@ const FinancialOverview = () => {
   const [selectedView, setSelectedView] = useState('overview');
   const [selectedPeriod, setSelectedPeriod] = useState('monthly');
 
-  const totalTeamSalaries = calculateTotalTeamSalaries(teamMembers);
-  const totalInternStipends = calculateTotalInternStipends(interns);
+  // Memoize expensive calculations to avoid recalculating on every render
+  const totalTeamSalaries = useMemo(() => calculateTotalTeamSalaries(teamMembers), []);
+  const totalInternStipends = useMemo(() => calculateTotalInternStipends(interns), []);
   const totalTaskCosts = 8000; // From data
-  const totalMonthly = totalTeamSalaries + totalInternStipends + totalTaskCosts;
+  const totalMonthly = useMemo(() =>
+    totalTeamSalaries + totalInternStipends + totalTaskCosts,
+    [totalTeamSalaries, totalInternStipends]
+  );
 
-  const ytdData = calculateYTD(monthlySpendingTrend);
-  const avgMonthlySpending = calculateAverageMonthlySpending(monthlySpendingTrend);
-  const forecastData = forecastCosts(monthlySpendingTrend, 3);
+  const ytdData = useMemo(() => calculateYTD(monthlySpendingTrend), []);
+  const avgMonthlySpending = useMemo(() => calculateAverageMonthlySpending(monthlySpendingTrend), []);
+  const forecastData = useMemo(() => forecastCosts(monthlySpendingTrend, 3), []);
 
   // Calculate total budget and spent
-  const totalBudget = budgetAllocations.reduce((sum, b) => sum + b.budgetAmount, 0);
-  const totalSpent = budgetAllocations.reduce((sum, b) => sum + b.spent, 0);
-  const budgetUtilization = (totalSpent / totalBudget) * 100;
+  const totalBudget = useMemo(() => budgetAllocations.reduce((sum, b) => sum + b.budgetAmount, 0), []);
+  const totalSpent = useMemo(() => budgetAllocations.reduce((sum, b) => sum + b.spent, 0), []);
+  const budgetUtilization = useMemo(() => (totalSpent / totalBudget) * 100, [totalSpent, totalBudget]);
 
   return (
     <div className="financialOverview">

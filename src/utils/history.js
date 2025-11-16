@@ -376,7 +376,7 @@ export const createBatch = (description) => {
 
 export { HistoryManager };
 
-export default {
+const historyManager = {
   initializeHistory,
   recordChange,
   undo,
@@ -393,3 +393,5 @@ export default {
   createBatch,
   HistoryManager,
 };
+
+export default historyManager;

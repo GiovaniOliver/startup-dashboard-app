@@ -13,11 +13,18 @@
 
 # misc
 .DS_Store
+
+# Environment files - NEVER commit these
 .env
 .env.local
+.env.development
 .env.development.local
+.env.test
 .env.test.local
+.env.production
 .env.production.local
+*.env
+*.env.local
 
 # logs
 npm-debug.log*

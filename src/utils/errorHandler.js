@@ -1,9 +1,27 @@
 /**
  * Error Handler Utility
- * Centralized error handling and logging
+ * Centralized error handling and logging for the application
+ * @module utils/errorHandler
  */
 
+/**
+ * Base application error class
+ * @class AppError
+ * @extends Error
+ * @property {number} statusCode - HTTP status code
+ * @property {boolean} isOperational - Whether the error is operational (expected) or programming error
+ * @property {string} timestamp - ISO timestamp when error occurred
+ *
+ * @example
+ * throw new AppError('Something went wrong', 500);
+ */
 export class AppError extends Error {
+  /**
+   * Create an application error
+   * @param {string} message - Error message
+   * @param {number} [statusCode=500] - HTTP status code
+   * @param {boolean} [isOperational=true] - Whether error is operational
+   */
   constructor(message, statusCode = 500, isOperational = true) {
     super(message);
     this.statusCode = statusCode;
@@ -13,7 +31,21 @@ export class AppError extends Error {
   }
 }
 
+/**
+ * Validation error class for form and input validation failures
+ * @class ValidationError
+ * @extends AppError
+ * @property {Object} errors - Field-specific error messages
+ *
+ * @example
+ * throw new ValidationError('Validation failed', { email: 'Invalid email format' });
+ */
 export class ValidationError extends AppError {
+  /**
+   * Create a validation error
+   * @param {string} message - Error message
+   * @param {Object} [errors={}] - Field-specific error details
+   */
   constructor(message, errors = {}) {
     super(message, 422);
     this.errors = errors;
@@ -21,28 +53,76 @@ export class ValidationError extends AppError {
   }
 }
 
+/**
+ * Authentication error for login/auth failures
+ * @class AuthenticationError
+ * @extends AppError
+ *
+ * @example
+ * throw new AuthenticationError('Invalid credentials');
+ */
 export class AuthenticationError extends AppError {
+  /**
+   * Create an authentication error
+   * @param {string} [message='Authentication failed'] - Error message
+   */
   constructor(message = 'Authentication failed') {
     super(message, 401);
     this.name = 'AuthenticationError';
   }
 }
 
+/**
+ * Authorization error for permission/access denied
+ * @class AuthorizationError
+ * @extends AppError
+ *
+ * @example
+ * throw new AuthorizationError('Admin access required');
+ */
 export class AuthorizationError extends AppError {
+  /**
+   * Create an authorization error
+   * @param {string} [message='You are not authorized to perform this action'] - Error message
+   */
   constructor(message = 'You are not authorized to perform this action') {
     super(message, 403);
     this.name = 'AuthorizationError';
   }
 }
 
+/**
+ * Not found error for missing resources
+ * @class NotFoundError
+ * @extends AppError
+ *
+ * @example
+ * throw new NotFoundError('User');  // "User not found"
+ */
 export class NotFoundError extends AppError {
+  /**
+   * Create a not found error
+   * @param {string} [resource='Resource'] - Name of the resource that wasn't found
+   */
   constructor(resource = 'Resource') {
     super(`${resource} not found`, 404);
     this.name = 'NotFoundError';
   }
 }
 
+/**
+ * Network error for connection/request failures
+ * @class NetworkError
+ * @extends AppError
+ *
+ * @example
+ * throw new NetworkError('Unable to reach server');
+ */
 export class NetworkError extends AppError {
+  /**
+   * Create a network error
+   * @param {string} [message='Network request failed'] - Error message
+   */
   constructor(message = 'Network request failed') {
     super(message, 0);
     this.name = 'NetworkError';
@@ -50,7 +130,21 @@ export class NetworkError extends AppError {
 }
 
 /**
- * Error logger
+ * Log error with context and store for debugging
+ * Logs to console in development, sends to error tracking service in production,
+ * and stores last 10 errors in localStorage
+ *
+ * @function logError
+ * @param {Error} error - The error to log
+ * @param {Object} [context={}] - Additional context about the error
+ * @returns {Object} The error log object
+ *
+ * @example
+ * try {
+ *   riskyOperation();
+ * } catch (error) {
+ *   logError(error, { userId: 123, action: 'save' });
+ * }
  */
 export const logError = (error, context = {}) => {
   const errorLog = {
@@ -85,7 +179,20 @@ export const logError = (error, context = {}) => {
 };
 
 /**
- * Handle API errors
+ * Convert API/HTTP errors to appropriate AppError subclasses
+ * Maps HTTP status codes to specific error types
+ *
+ * @function handleApiError
+ * @param {Error} error - The error from API call (typically Axios error)
+ * @returns {AppError} Appropriate error type based on status code
+ *
+ * @example
+ * try {
+ *   await axios.get('/api/users');
+ * } catch (error) {
+ *   const appError = handleApiError(error);
+ *   throw appError;
+ * }
  */
 export const handleApiError = (error) => {
   if (error.response) {
@@ -120,7 +227,21 @@ export const handleApiError = (error) => {
 };
 
 /**
- * Async error wrapper for try-catch
+ * Wrap async functions to automatically handle and log errors
+ * Eliminates need for repetitive try-catch blocks
+ *
+ * @function asyncHandler
+ * @param {Function} fn - Async function to wrap
+ * @returns {Function} Wrapped function with error handling
+ *
+ * @example
+ * const fetchUser = asyncHandler(async (userId) => {
+ *   const response = await api.getUser(userId);
+ *   return response.data;
+ * });
+ *
+ * // Errors are automatically caught and logged
+ * const user = await fetchUser(123);
  */
 export const asyncHandler = (fn) => {
   return async (...args) => {
@@ -135,7 +256,18 @@ export const asyncHandler = (fn) => {
 };
 
 /**
- * Get user-friendly error message
+ * Convert technical error to user-friendly message
+ * Provides helpful, non-technical messages for different error types
+ *
+ * @function getUserFriendlyMessage
+ * @param {Error} error - The error to convert
+ * @returns {string} User-friendly error message
+ *
+ * @example
+ * catch (error) {
+ *   const message = getUserFriendlyMessage(error);
+ *   toast.error(message);  // "Please check your input and try again."
+ * }
  */
 export const getUserFriendlyMessage = (error) => {
   if (error instanceof ValidationError) {
@@ -154,7 +286,17 @@ export const getUserFriendlyMessage = (error) => {
 };
 
 /**
- * Safe JSON parse with error handling
+ * Safely parse JSON string with fallback value
+ * Returns default value instead of throwing on parse errors
+ *
+ * @function safeJsonParse
+ * @param {string} jsonString - JSON string to parse
+ * @param {*} [defaultValue=null] - Value to return if parsing fails
+ * @returns {*} Parsed object or default value
+ *
+ * @example
+ * const data = safeJsonParse(localStorage.getItem('user'), {});
+ * // Returns {} if invalid JSON instead of throwing error
  */
 export const safeJsonParse = (jsonString, defaultValue = null) => {
   try {
@@ -166,7 +308,19 @@ export const safeJsonParse = (jsonString, defaultValue = null) => {
 };
 
 /**
- * Safe async operation with timeout
+ * Add timeout to any Promise to prevent hanging operations
+ * Rejects with timeout error if operation takes too long
+ *
+ * @function withTimeout
+ * @param {Promise} promise - Promise to add timeout to
+ * @param {number} [timeoutMs=30000] - Timeout in milliseconds
+ * @returns {Promise} Promise that resolves or rejects with timeout
+ *
+ * @example
+ * const data = await withTimeout(
+ *   fetch('/api/large-data'),
+ *   5000  // 5 second timeout
+ * );
  */
 export const withTimeout = (promise, timeoutMs = 30000) => {
   return Promise.race([
@@ -178,7 +332,24 @@ export const withTimeout = (promise, timeoutMs = 30000) => {
 };
 
 /**
- * Retry failed operations
+ * Retry failed operations with exponential backoff
+ * Useful for transient network errors or rate limiting
+ *
+ * @function retryOperation
+ * @param {Function} operation - Async function to retry
+ * @param {number} [maxRetries=3] - Maximum number of retry attempts
+ * @param {number} [delayMs=1000] - Initial delay between retries in milliseconds
+ * @param {number} [backoff=2] - Backoff multiplier for each retry
+ * @returns {Promise} Result of the operation
+ * @throws {Error} Last error if all retries fail
+ *
+ * @example
+ * const data = await retryOperation(
+ *   () => fetch('/api/data').then(r => r.json()),
+ *   3,     // Try 3 times
+ *   1000,  // Start with 1 second delay
+ *   2      // Double delay each time (1s, 2s, 4s)
+ * );
  */
 export const retryOperation = async (
   operation,
@@ -204,7 +375,15 @@ export const retryOperation = async (
 };
 
 /**
- * Global error handler
+ * Set up global error handlers for unhandled errors
+ * Call this once during application initialization
+ * Catches unhandled promise rejections and global errors
+ *
+ * @function setupGlobalErrorHandlers
+ *
+ * @example
+ * // In index.js or App.js
+ * setupGlobalErrorHandlers();
  */
 export const setupGlobalErrorHandlers = () => {
   // Handle unhandled promise rejections

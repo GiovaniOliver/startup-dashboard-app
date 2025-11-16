@@ -595,7 +595,7 @@ export const getInternStatistics = (interns) => {
   };
 };
 
-export default {
+const dataManager = {
   // Validation
   validateTeam,
   validateIntern,
@@ -641,3 +641,5 @@ export default {
   getTaskStatistics,
   getInternStatistics,
 };
+
+export default dataManager;

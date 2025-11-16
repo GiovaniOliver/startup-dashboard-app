@@ -3,7 +3,7 @@
  * Manages UI state, notifications, user preferences, etc.
  */
 
-import React, { createContext, useReducer, useContext, useEffect } from 'react';
+import React, { createContext, useReducer, useContext, useEffect, useMemo } from 'react';
 import { saveToStorage, loadFromStorage, STORAGE_KEYS } from '../utils/storage';
 
 // Initial state
@@ -296,7 +296,8 @@ export const AppContextProvider = ({ children }) => {
     dispatch({ type: APP_ACTIONS.RESET_APP_STATE });
   };
 
-  const value = {
+  // Memoize context value to prevent unnecessary re-renders
+  const value = useMemo(() => ({
     state,
     dispatch,
     // Helper functions
@@ -317,7 +318,7 @@ export const AppContextProvider = ({ children }) => {
     setFilters,
     clearFilters,
     resetAppState,
-  };
+  }), [state]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

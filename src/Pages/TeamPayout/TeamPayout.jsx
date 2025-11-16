@@ -8,7 +8,6 @@ import {
   calculateTaxDeduction,
   calculateNetPay,
   formatCurrency,
-  generatePayStub,
 } from '../../utils/calculations';
 
 const TeamPayout = () => {

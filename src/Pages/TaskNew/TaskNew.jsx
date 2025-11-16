@@ -163,8 +163,6 @@ const TaskNew = () => {
       activityLog: isEditMode ? existingTask.activityLog : []
     };
 
-    console.log('Task data to save:', taskDataToSave);
-
     // In a real app, this would save to backend
     alert(isEditMode ? 'Task updated successfully!' : 'Task created successfully!');
     navigate('/tasks');

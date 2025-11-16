@@ -9,8 +9,6 @@ import {
   List as ListIcon,
   CalendarMonth as CalendarIcon,
   Add as AddIcon,
-  FilterList as FilterIcon,
-  Sort as SortIcon,
   Search as SearchIcon,
   CheckCircle as CheckIcon,
   AccessTime as TimeIcon,

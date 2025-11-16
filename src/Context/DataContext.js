@@ -2,7 +2,7 @@
  * Data Context - Centralized data management for teams, interns, tasks, and finances
  */
 
-import React, { createContext, useReducer, useContext, useEffect, useCallback } from 'react';
+import React, { createContext, useReducer, useContext, useEffect, useCallback, useMemo } from 'react';
 import { saveToStorage, loadFromStorage, STORAGE_KEYS } from '../utils/storage';
 import { syncToStorage, syncFromStorage, createDebouncedSave } from '../utils/sync';
 import { initializeHistory, recordChange } from '../utils/history';
@@ -442,8 +442,8 @@ export const DataContextProvider = ({ children }) => {
     return dataManager.getFinancesByIntern(state.finances, internId);
   }, [state.finances]);
 
-  // Context value
-  const value = {
+  // Context value - memoized to prevent unnecessary re-renders
+  const value = useMemo(() => ({
     // State
     teams: state.teams,
     interns: state.interns,
@@ -489,7 +489,40 @@ export const DataContextProvider = ({ children }) => {
 
     // Direct dispatch for advanced use cases
     dispatch,
-  };
+  }), [
+    state.teams,
+    state.interns,
+    state.tasks,
+    state.finances,
+    state.initialized,
+    createTeam,
+    updateTeam,
+    deleteTeam,
+    getTeamById,
+    createIntern,
+    updateIntern,
+    deleteIntern,
+    getInternById,
+    createTask,
+    updateTask,
+    deleteTask,
+    getTaskById,
+    createFinance,
+    updateFinance,
+    deleteFinance,
+    getFinanceById,
+    resetData,
+    loadDemoData,
+    searchTeams,
+    searchInterns,
+    searchTasks,
+    getInternsByTeam,
+    getTasksByTeam,
+    getTasksByIntern,
+    getFinancesByTeam,
+    getFinancesByIntern,
+    dispatch,
+  ]);
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };

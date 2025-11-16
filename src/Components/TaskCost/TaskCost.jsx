@@ -3,16 +3,22 @@ import { Link } from 'react-router-dom';
 import Sidebar from '../sidebar/Sidebar';
 import Navbar from '../navbar/Navbar';
 import './TaskCost.scss';
-import {
-  AttachMoney as MoneyIcon,
-  TrendingUp as TrendUpIcon,
-  TrendingDown as TrendDownIcon,
-  PieChart as PieIcon,
-  Person as PersonIcon,
-  Assignment as TaskIcon,
-  FilterList as FilterIcon
-} from '@mui/icons-material';
+import AttachMoney from '@mui/icons-material/AttachMoney';
+import TrendingUp from '@mui/icons-material/TrendingUp';
+import TrendingDown from '@mui/icons-material/TrendingDown';
+import PieChart from '@mui/icons-material/PieChart';
+import Person from '@mui/icons-material/Person';
+import Assignment from '@mui/icons-material/Assignment';
+import FilterList from '@mui/icons-material/FilterList';
 import taskData, { calculateTaskCost, getTaskStatistics } from '../../data/taskData';
+
+const MoneyIcon = AttachMoney;
+const TrendUpIcon = TrendingUp;
+const TrendDownIcon = TrendingDown;
+const PieIcon = PieChart;
+const PersonIcon = Person;
+const TaskIcon = Assignment;
+const FilterIcon = FilterList;
 
 const TaskCost = () => {
   const [viewMode, setViewMode] = useState('overview'); // overview, byTask, byAssignee

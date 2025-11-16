@@ -424,7 +424,7 @@ export const createDebouncedSave = (saveCallback, delay = 1000) => {
   return debounce(saveCallback, delay);
 };
 
-export default {
+const syncManager = {
   // Auto-save
   enableAutoSave,
   disableAutoSave,
@@ -448,3 +448,5 @@ export default {
   debounce,
   createDebouncedSave,
 };
+
+export default syncManager;

@@ -200,18 +200,18 @@ const Help = () => {
           <div className="additionalResources">
             <h2>Additional Resources</h2>
             <div className="resourcesList">
-              <a href="#" className="resourceLink">
+              <button className="resourceLink" onClick={() => {}}>
                 <MenuBookIcon /> Platform Documentation
-              </a>
-              <a href="#" className="resourceLink">
+              </button>
+              <button className="resourceLink" onClick={() => {}}>
                 <PlayCircleOutlineIcon /> Video Tutorial Library
-              </a>
-              <a href="#" className="resourceLink">
+              </button>
+              <button className="resourceLink" onClick={() => {}}>
                 <HelpOutlineIcon /> Community Forum
-              </a>
-              <a href="#" className="resourceLink">
+              </button>
+              <button className="resourceLink" onClick={() => {}}>
                 <CheckCircleIcon /> Best Practices Guide
-              </a>
+              </button>
             </div>
           </div>
         </div>

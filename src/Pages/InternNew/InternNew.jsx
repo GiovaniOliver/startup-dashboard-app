@@ -111,8 +111,6 @@ const InternNew = () => {
         resumeFile: resumeFile,
       };
 
-      console.log(isEditMode ? "Updating intern:" : "Creating new intern:", internPayload);
-
       // Show success message
       alert(isEditMode ? "Intern updated successfully!" : "Intern added successfully!");
 

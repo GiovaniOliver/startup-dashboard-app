@@ -40,7 +40,7 @@ const Login = () => {
   useEffect(() => {
     setFormError("");
     clearError();
-  }, [loginMethod]);
+  }, [loginMethod, clearError]);
 
   const handleNearLogin = async () => {
     if (!nearInitialized) {
